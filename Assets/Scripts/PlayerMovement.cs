@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject bulletPrefab;
+
     public float playerSpeed = 5;
-    private Rigidbody2D playerRB;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerRB = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
@@ -34,5 +35,10 @@ public class PlayerMovement : MonoBehaviour
             this.transform.Translate(Vector2.right * Time.deltaTime * playerSpeed);
         }
 
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(bulletPrefab, this.transform.position, bulletPrefab.transform.rotation);
+        }
     }
 }
