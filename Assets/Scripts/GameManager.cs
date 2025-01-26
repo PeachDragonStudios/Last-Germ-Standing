@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public int ampUp = 4;
     private GameObject bubbleToSpawn;
 
+    private int balls = 5;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
