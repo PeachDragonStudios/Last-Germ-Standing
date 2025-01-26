@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private GameObject bubbleToSpawn;
 
     public int playerHealth = 3;
+    //private int balls = 5;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
