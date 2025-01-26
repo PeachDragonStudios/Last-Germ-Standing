@@ -6,9 +6,13 @@ public class GameManager : MonoBehaviour
     public AudioClip[] popAudioClips;
     private AudioSource audioBot;
 
+    public AudioClip hurtSound;
+
     public GameObject[] bubbles;
     public int ampUp = 4;
     private GameObject bubbleToSpawn;
+
+    public int playerHealth = 3;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,6 +36,14 @@ public class GameManager : MonoBehaviour
         int randIndex = Random.Range(0, popAudioClips.Length);
         audioBot.clip = popAudioClips[randIndex];
 
+        audioBot.Play();
+    }
+
+    public void gotHurt()
+    {
+        Debug.Log("That looks like it hurt!");
+        audioBot.clip = hurtSound;
+        playerHealth -= 1;
         audioBot.Play();
     }
 

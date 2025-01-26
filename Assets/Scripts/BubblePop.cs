@@ -13,18 +13,23 @@ public class BubblePop : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        gameMan = GameObject.Find("Game_Manager");
+
         gameManager = gameMan.GetComponent<GameManager>();
-        
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 direction = player.transform.position - transform.position;
-        direction.Normalize();
+        if (player != null)
+        {
+            Vector2 direction = player.transform.position - transform.position;
+            direction.Normalize();
 
-        transform.Translate(direction * Time.deltaTime * speed);
+            transform.Translate(direction * Time.deltaTime * speed);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -33,6 +38,19 @@ public class BubblePop : MonoBehaviour
         if (other.gameObject.tag == "Bullet")
         {
             Destroy(other.gameObject); 
+        }
+
+        if(other.gameObject.tag == "Player")
+        {
+            if(gameManager.playerHealth > 1)
+            {
+                gameManager.gotHurt();                
+            }
+            else
+            {
+                Destroy(other.gameObject);
+                Debug.Log("Game Over!");
+            }
         }
         gameManager.playRandomPop();
 

@@ -9,11 +9,13 @@ public class PlayerMovement : MonoBehaviour
     public float radius = 22f;
 
     private Vector2 moveDirection;
+    private SpriteRenderer playerSprite;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         center = new Vector2(-0.7f, 0.1f);
+        playerSprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -23,6 +25,15 @@ public class PlayerMovement : MonoBehaviour
         // Get player input (movement direction)
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
+
+        if(moveX > 0)
+        {
+            playerSprite.flipX = true;
+        }
+        else if(moveX < 0)
+        {
+            playerSprite.flipX = false;
+        }
 
         moveDirection = new Vector2(moveX, moveY).normalized;
 
