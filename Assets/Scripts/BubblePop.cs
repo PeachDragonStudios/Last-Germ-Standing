@@ -32,10 +32,11 @@ public class BubblePop : MonoBehaviour
         //Debug.Log("You collided with " + other);
         if (other.gameObject.tag == "Bullet")
         {
-            Destroy(other.gameObject);
-            gameManager.playRandomPop();
+            Destroy(other.gameObject); 
         }
-        
+        gameManager.playRandomPop();
+
+        //Add Script to reduce player health if colliding with the player
         Destroy(gameObject);
     }
 }

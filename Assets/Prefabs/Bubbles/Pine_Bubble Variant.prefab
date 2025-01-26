@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: speed
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1495550655262567984, guid: 559362a2984605444ac482476d0a41d8, type: 3}
+      propertyPath: gameMan
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1955762910371983318, guid: 559362a2984605444ac482476d0a41d8, type: 3}
       propertyPath: m_Name
       value: Pine_Bubble Variant
