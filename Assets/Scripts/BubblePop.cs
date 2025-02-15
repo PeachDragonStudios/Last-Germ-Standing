@@ -37,20 +37,13 @@ public class BubblePop : MonoBehaviour
         //Debug.Log("You collided with " + other);
         if (other.gameObject.tag == "Bullet")
         {
-            Destroy(other.gameObject); 
+            Destroy(other.gameObject);
+            gameManager.bubblesPopped += 1;
         }
 
         if(other.gameObject.tag == "Player")
         {
-            if(gameManager.playerHealth > 1)
-            {
-                gameManager.gotHurt();                
-            }
-            else
-            {
-                Destroy(other.gameObject);
-                Debug.Log("Game Over!");
-            }
+            gameManager.gotHurt();
         }
         gameManager.playRandomPop();
 

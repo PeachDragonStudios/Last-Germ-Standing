@@ -10,10 +10,22 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 moveDirection;
     private SpriteRenderer playerSprite;
+    public Rigidbody2D playerRb;
+
+    private void OnEnable()
+    {
+        GameManager.OnPlayerDeath += DisablePlayerMovement;
+    }
+    private void OnDisable()
+    {
+        GameManager.OnPlayerDeath -= DisablePlayerMovement;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        EnablePlayerMovement();
+
         center = new Vector2(-0.7f, 0.1f);
         playerSprite = GetComponent<SpriteRenderer>();
     }
@@ -63,5 +75,15 @@ public class PlayerMovement : MonoBehaviour
             // Set the player's position to be on the boundary of the circle
             transform.position = center + directionFromCenter * radius;
         }
+    }
+
+    private void DisablePlayerMovement()
+    {
+        playerRb.bodyType = RigidbodyType2D.Static;
+    }
+
+    private void EnablePlayerMovement()
+    {
+        playerRb.bodyType = RigidbodyType2D.Dynamic;
     }
 }
