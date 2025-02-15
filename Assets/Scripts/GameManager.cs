@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
 
             bubblePopScript.player = GameObject.Find("Player");
             bubblePopScript.gameMan = GameObject.Find("Game_Manager");
+            Debug.Log("Alex Likes Girls With Big Boo...Dreads");
         }
 
     }
